@@ -1,0 +1,28 @@
+<?php
+$servername = "localhost"
+$username = "uspfstudent";
+$password = "1234567";
+$dbname = "schooldb";
+
+// Create connection 
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+
+// sql to create table 
+$sql = "CREATE TABLE studenttable (
+Student_Id_Number VARCHAR(15) NOT NULL, Student_Family_Name VARCHAR(50) NOT
+(50) NOT NULL, Student_Email_Address VARCHAR(50) NOT NULL,
+Student_Home_Address VARCHAR(100) NOT NULL, Student_Mobile_number VARCHAR
+(15) NOT NULL, Student_Course VARCHAR(50) NOT NULL)";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Table studenttable created successfully";
+} else {
+  echo "Error creating table: " . $conn->error;
+}
+
+$conn->close();
